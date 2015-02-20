@@ -1,0 +1,37 @@
+CodeBook.txt
+
+This file appends the README.txt file provided in the data set obtained from “https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip”  and describes data modifications and files produced by the execution of the program run_analysis.R. 
+
+test.dt – a data table created to load the test data from X_test.txt containing 561 columns numbered V1 – V561. The data is normalized in the range -1 to 1.
+
+	A column,V562, is created in test.dt from the file y_test.txt. The column identifies the type of activity each observation describes using numbers 1-6.
+
+	A column, V563, is created in test.dt from the file subject_test.txt. The column identifies the subject used in each observation using numbers 1-30.
+
+train.dt – a data table created to load the test data from X_train.txt containing 561 columns numbered V1 – V561. The data is normalized in the range -1 to 1.
+
+	A column,V562, is created in train.dt from the file y_train.txt. The column identifies the type of activity each observation describes using numbers 1-6.
+
+	A column, V563, is created in train.dt from the file subject_train.txt. The column identifies the subject used in each observation using numbers 1-30.
+
+heading.names – a vector created to hold the variable column names contained in the file features.txt. The contents are class character. All dashes are replaced with underscores.
+
+merged.names – a vector containing the combination of heading.names with the elements “activity” and “subject” appended. Character data.
+
+merged.dt – a data table resulting from the combination of test.dt and train.dt. It contains 563 columns of normalized data labeled V1 – V563.  Elements from the vector merged.names are inserted as variable column names.  The activity column is coerced into factors to facilitate grouping and labels are assigned as follows:
+
+		1 = WALKING
+		2 = WALKING_UPSTAIRS
+		3 = WALKING_DOWNSTAIRS
+		4 = SITTING
+		5 = STANDING
+		6 = LAYING
+The subject column is coerced into factors to facilitate grouping.
+
+colToExtract – a vector created to hold the variable column names which contain "Mean|mean|std|activity|subject”.
+
+stepFour.dt – a data table created to contain all columns in merged.dt that contain measures of mean or standard deviation plus the activity and subject columns. The data is normalized. The activity column contains a text label identifying the activity for each observation. The subject column contains a categorical number representing the subject ID for each observation.
+
+tidyData.df – a data frame created to hold the mean, grouped by subject and activity, of all measurement variables contained in stepFour.dt 
+
+tidyData.txt – a text file containing the data from tidyData.df

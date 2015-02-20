@@ -3,18 +3,18 @@ library(dplyr)
 library(tidyr)
 
 ## read in test data
-test.dt <- read.table("./test/X_test.txt",sep="")
+test.dt <- read.table("X_test.txt",sep="")
 ## add activity labels as column v562
-test.dt$v562 <- scan("./test/y_test.txt")
+test.dt$v562 <- scan("y_test.txt")
 ## add subject ids as column v563
-test.dt$v563 <- scan("./test/subject_test.txt")
+test.dt$v563 <- scan("subject_test.txt")
 
 ## read train data
-train.dt <- read.table("./train/X_train.txt",sep="")
+train.dt <- read.table("X_train.txt",sep="")
 ## add activity labels as column v562
-train.dt$v562 <- scan("./train/y_train.txt")
+train.dt$v562 <- scan("y_train.txt")
 ## add subject ids as column v563
-train.dt$v563 <- scan("./train/subject_train.txt")
+train.dt$v563 <- scan("subject_train.txt")
 
 ## merge the test and train data frames
 merged.dt <- rbind(test.dt,train.dt)
